@@ -33,6 +33,7 @@ dependencies:
   google_fonts: ^2.1.0
   http: ^0.13.3
   tflite: ^1.1.2
+  sliding_up_panel: ^2.0.0+1
 
 
 
