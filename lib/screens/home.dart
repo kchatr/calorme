@@ -40,6 +40,25 @@ class _HomePageState extends State<HomePage> {
 
     nutritionInfo = await getInfo(
         "https://api.edamam.com/api/nutrition-data?app_id=e45357af&app_key=b93730855e301e7ba5518d4b4c707e9a&nutrition_type=logging&ingr=1%20slice%20chocolate%20cake");
+    setState(() {
+      nutritionInfo;
+    });
+    showDialog<String>(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        title: const Text('Nutritional Information Updated'),
+        content: const Text('Swipe up on the panel to view information.'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.pop(context, 'OK'),
+            child: const Text('OK',
+                style: TextStyle(color: Color(0xff7c064f), fontSize: 16.0)),
+          ),
+        ],
+        titleTextStyle:
+            const TextStyle(color: Color(0xff7c064f), fontSize: 20.0),
+      ),
+    );
   }
 
   @override
@@ -47,7 +66,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Welcome to CalorMe"),
-        backgroundColor: Color(0xff7c064f),
+        backgroundColor: const Color(0xff7c064f),
       ),
       body: SlidingUpPanel(
         color: Colors.pink.shade800,
@@ -131,26 +150,17 @@ class _HomePageState extends State<HomePage> {
               ),
               child: Center(
                 child: Image.asset("assets/images/calorme.png"),
-                // child: Text(
-                //   "Welcome to CalorMe!",
-                //   textAlign: TextAlign.center,
-                //   style: GoogleFonts.questrial(
-                //     textStyle: const TextStyle(
-                //       fontSize: 40.0,
-                //       color: Colors.white,
-                //     ),
-                //   ),
-                // ),
               ),
             ),
             Container(
               child: imageFile != null
                   ? Image.file(imageFile!)
-                  : Container(decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage("assets/images/bg.png"),
-                    ),
-                  )),
+                  : Container(
+                      decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/bg.png"),
+                      ),
+                    )),
             ),
             // if (imageFile != null) ...[Image.file(imageFile!)],
           ],
