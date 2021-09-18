@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Calorie Counter"),
+        title: const Text("Welcome to CalorMe"),
         backgroundColor: Colors.purple[300],
       ),
       body: SlidingUpPanel(
@@ -128,16 +128,17 @@ class _HomePageState extends State<HomePage> {
                     fit: BoxFit.fill),
               ),
               child: Center(
-                child: Text(
-                  "Welcome to CalorMe!",
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.questrial(
-                    textStyle: const TextStyle(
-                      fontSize: 40.0,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
+                child: Image.asset("assets/images/calorme.png"),
+                // child: Text(
+                //   "Welcome to CalorMe!",
+                //   textAlign: TextAlign.center,
+                //   style: GoogleFonts.questrial(
+                //     textStyle: const TextStyle(
+                //       fontSize: 40.0,
+                //       color: Colors.white,
+                //     ),
+                //   ),
+                // ),
               ),
             ),
             if (imageFile != null) ...[Image.file(imageFile!)],
