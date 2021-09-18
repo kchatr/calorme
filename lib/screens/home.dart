@@ -21,6 +21,7 @@ class _HomePageState extends State<HomePage> {
 
     setState(() {
       imageFile = selected;
+      print(imageFile);
     });
   }
 
@@ -31,24 +32,30 @@ class _HomePageState extends State<HomePage> {
         title: const Text("Calorie Counter"),
         backgroundColor: Colors.purple[300],
       ),
-      body: Container(
-        height: 240.0,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage("assets/images/home_bg.jpg"), fit: BoxFit.fill),
-        ),
-        child: Center(
-          child: Text(
-            "Welcome to CalorMe!",
-            textAlign: TextAlign.center,
-            style: GoogleFonts.questrial(
-              textStyle: const TextStyle(
-                fontSize: 40.0,
-                color: Colors.white,
+      body: ListView(
+        children: [
+          Container(
+            height: 240.0,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/images/home_bg.jpg"),
+                  fit: BoxFit.fill),
+            ),
+            child: Center(
+              child: Text(
+                "Welcome to CalorMe!",
+                textAlign: TextAlign.center,
+                style: GoogleFonts.questrial(
+                  textStyle: const TextStyle(
+                    fontSize: 40.0,
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ),
           ),
-        ),
+          if (imageFile != null) ...[Image.file(imageFile!)],
+        ],
       ),
       // floatingActionButton: FloatingActionButton(
       //   onPressed: () {
