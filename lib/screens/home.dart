@@ -47,15 +47,16 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Welcome to CalorMe"),
-        backgroundColor: Colors.purple[300],
+        backgroundColor: Color(0xff7c064f),
       ),
       body: SlidingUpPanel(
-        color: Colors.teal.shade300,
+        color: Colors.pink.shade800,
         borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(22.0), topRight: Radius.circular(22.0)),
         minHeight: 30.0,
         panel: Column(
           children: [
+            const Icon(Icons.arrow_drop_up, size: 30.0, color: Colors.white),
             Text("Nutritional Info",
                 textAlign: TextAlign.center,
                 style: GoogleFonts.rubik(
@@ -121,10 +122,11 @@ class _HomePageState extends State<HomePage> {
         body: ListView(
           children: [
             Container(
-              height: 240.0,
+              height: 400,
               decoration: const BoxDecoration(
+                // color: Colors.white,
                 image: DecorationImage(
-                    image: AssetImage("assets/images/home_bg.jpg"),
+                    image: AssetImage("assets/images/bg.jpg"),
                     fit: BoxFit.fill),
               ),
               child: Center(
@@ -141,12 +143,21 @@ class _HomePageState extends State<HomePage> {
                 // ),
               ),
             ),
-            if (imageFile != null) ...[Image.file(imageFile!)],
+            Container(
+              child: imageFile != null
+                  ? Image.file(imageFile!)
+                  : Container(decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("assets/images/bg.png"),
+                    ),
+                  )),
+            ),
+            // if (imageFile != null) ...[Image.file(imageFile!)],
           ],
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.purple[100],
+        color: const Color(0xff7c064f),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
