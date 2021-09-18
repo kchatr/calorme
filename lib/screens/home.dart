@@ -128,97 +128,31 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
-        // panel: Column(
-        //   children: [
-        //     const Icon(Icons.arrow_drop_up, size: 30.0, color: Colors.white),
-        //     Text("Nutritional Info",
-        //         textAlign: TextAlign.center,
-        //         style: GoogleFonts.rubik(
-        //           fontSize: 19.0,
-        //           color: Colors.white,
-        //         )),
-        //     const SizedBox(height: 30),
-        //     Text(
-        //       "Calories: ${nutritionInfo?['calories'] ?? 'N/A'}",
-        //       style: GoogleFonts.quicksand(
-        //         fontSize: 17.5,
-        //         fontWeight: FontWeight.w500,
-        //         color: Colors.white,
-        //       ),
-        //     ),
-        //     const SizedBox(height: 6),
-        //     Text(
-        //       "Fat: ${nutritionInfo?['totalNutrients']['FAT']['quantity'] ?? 'N/A'} g",
-        //       style: GoogleFonts.quicksand(
-        //         fontSize: 17.5,
-        //         fontWeight: FontWeight.w500,
-        //         color: Colors.white,
-        //       ),
-        //     ),
-        //     const SizedBox(height: 6),
-        //     Text(
-        //       "Fiber: ${nutritionInfo?['totalNutrients']['FIBTG']['quantity'] ?? 'N/A'} g",
-        //       style: GoogleFonts.quicksand(
-        //         fontSize: 17.5,
-        //         fontWeight: FontWeight.w500,
-        //         color: Colors.white,
-        //       ),
-        //     ),
-        //     const SizedBox(height: 6),
-        //     Text(
-        //       "Protein: ${nutritionInfo?['totalNutrients']['PROCNT']['quantity'] ?? 'N/A'} g",
-        //       style: GoogleFonts.quicksand(
-        //         fontSize: 17.5,
-        //         fontWeight: FontWeight.w500,
-        //         color: Colors.white,
-        //       ),
-        //     ),
-        //     const SizedBox(height: 6),
-        //     Text(
-        //       "Carbs: ${nutritionInfo?['totalNutrients']['CHOCDF']['quantity'] ?? 'N/A'} g",
-        //       style: GoogleFonts.quicksand(
-        //         fontSize: 17.5,
-        //         fontWeight: FontWeight.w500,
-        //         color: Colors.white,
-        //       ),
-        //     ),
-        //     const SizedBox(height: 6),
-        //     Text(
-        //       "Cholesterol: ${nutritionInfo?['totalNutrients']['CHOLE']['quantity'] ?? 'N/A'}",
-        //       style: GoogleFonts.quicksand(
-        //         fontSize: 17.5,
-        //         fontWeight: FontWeight.w500,
-        //         color: Colors.white,
-        //       ),
-        //     ),
-        //   ],
-        // ),
-        body: ListView(
-          children: [
-            Container(
-              height: 400,
-              decoration: const BoxDecoration(
-                // color: Colors.white,
-                image: DecorationImage(
-                    image: AssetImage("assets/images/bg.jpg"),
-                    fit: BoxFit.fill),
-              ),
-              child: Center(
+        body: Container(
+          decoration: const BoxDecoration(
+            // color: Colors.white,
+            image: DecorationImage(
+                image: AssetImage("assets/images/bg.jpg"), fit: BoxFit.fill),
+          ),
+          child: ListView(
+            children: [
+              const SizedBox(height: 360),
+              Center(
                 child: Image.asset("assets/images/calorme.png"),
               ),
-            ),
-            Container(
-              child: imageFile != null
-                  ? Image.file(imageFile!)
-                  : Container(
-                      decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage("assets/images/bg.png"),
-                      ),
-                    )),
-            ),
-            // if (imageFile != null) ...[Image.file(imageFile!)],
-          ],
+              Container(
+                child: imageFile != null
+                    ? Image.file(imageFile!)
+                    : Container(
+                        decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage("assets/images/bg.jpg"),
+                        ),
+                      )),
+              ),
+
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: BottomAppBar(
