@@ -21,7 +21,6 @@ class _HomePageState extends State<HomePage> {
 
     setState(() {
       imageFile = selected;
-      print(imageFile);
     });
   }
 
