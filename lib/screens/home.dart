@@ -83,61 +83,116 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.white,
                 )),
             const SizedBox(height: 30),
-            Text(
-              "Calories: ${nutritionInfo?['calories'] ?? 'N/A'}",
-              style: GoogleFonts.quicksand(
-                fontSize: 17.5,
-                fontWeight: FontWeight.w500,
-                color: Colors.white,
-              ),
-            ),
-            const SizedBox(height: 6),
-            Text(
-              "Fat: ${nutritionInfo?['totalNutrients']['FAT']['quantity'] ?? 'N/A'} g",
-              style: GoogleFonts.quicksand(
-                fontSize: 17.5,
-                fontWeight: FontWeight.w500,
-                color: Colors.white,
-              ),
-            ),
-            const SizedBox(height: 6),
-            Text(
-              "Fiber: ${nutritionInfo?['totalNutrients']['FIBTG']['quantity'] ?? 'N/A'} g",
-              style: GoogleFonts.quicksand(
-                fontSize: 17.5,
-                fontWeight: FontWeight.w500,
-                color: Colors.white,
-              ),
-            ),
-            const SizedBox(height: 6),
-            Text(
-              "Protein: ${nutritionInfo?['totalNutrients']['PROCNT']['quantity'] ?? 'N/A'} g",
-              style: GoogleFonts.quicksand(
-                fontSize: 17.5,
-                fontWeight: FontWeight.w500,
-                color: Colors.white,
-              ),
-            ),
-            const SizedBox(height: 6),
-            Text(
-              "Carbs: ${nutritionInfo?['totalNutrients']['CHOCDF']['quantity'] ?? 'N/A'} g",
-              style: GoogleFonts.quicksand(
-                fontSize: 17.5,
-                fontWeight: FontWeight.w500,
-                color: Colors.white,
-              ),
-            ),
-            const SizedBox(height: 6),
-            Text(
-              "Cholesterol: ${nutritionInfo?['totalNutrients']['CHOLE']['quantity'] ?? 'N/A'}",
-              style: GoogleFonts.quicksand(
-                fontSize: 17.5,
-                fontWeight: FontWeight.w500,
-                color: Colors.white,
-              ),
+            Table(
+              border: TableBorder.all(color: Colors.white),
+              children: [
+                TableRow(children: [
+                  const Info("Calories"),
+                  Info(nutritionInfo?['calories'].toString() ?? 'N/A'),
+                ]),
+                TableRow(children: [
+                  const Info("Fat"),
+                  Info((nutritionInfo?['totalNutrients']['FAT']['quantity']
+                              .toString() ??
+                          'N/A') +
+                      "g"),
+                ]),
+                TableRow(children: [
+                  const Info("Fiber"),
+                  Info((nutritionInfo?['totalNutrients']['FIBTG']['quantity']
+                              .toString() ??
+                          'N/A') +
+                      "g"),
+                ]),
+                TableRow(children: [
+                  const Info("Protein"),
+                  Info((nutritionInfo?['totalNutrients']['PROCNT']['quantity']
+                              .toString() ??
+                          'N/A') +
+                      "g"),
+                ]),
+                TableRow(children: [
+                  const Info("Carbs"),
+                  Info((nutritionInfo?['totalNutrients']['CHOCDF']['quantity']
+                              .toString() ??
+                          'N/A') +
+                      "g"),
+                ]),
+                TableRow(children: [
+                  const Info("Cholesterol"),
+                  Info((nutritionInfo?['totalNutrients']['CHOLE']['quantity']
+                          .toString() ??
+                      'N/A')),
+                ]),
+              ],
             ),
           ],
         ),
+        // panel: Column(
+        //   children: [
+        //     const Icon(Icons.arrow_drop_up, size: 30.0, color: Colors.white),
+        //     Text("Nutritional Info",
+        //         textAlign: TextAlign.center,
+        //         style: GoogleFonts.rubik(
+        //           fontSize: 19.0,
+        //           color: Colors.white,
+        //         )),
+        //     const SizedBox(height: 30),
+        //     Text(
+        //       "Calories: ${nutritionInfo?['calories'] ?? 'N/A'}",
+        //       style: GoogleFonts.quicksand(
+        //         fontSize: 17.5,
+        //         fontWeight: FontWeight.w500,
+        //         color: Colors.white,
+        //       ),
+        //     ),
+        //     const SizedBox(height: 6),
+        //     Text(
+        //       "Fat: ${nutritionInfo?['totalNutrients']['FAT']['quantity'] ?? 'N/A'} g",
+        //       style: GoogleFonts.quicksand(
+        //         fontSize: 17.5,
+        //         fontWeight: FontWeight.w500,
+        //         color: Colors.white,
+        //       ),
+        //     ),
+        //     const SizedBox(height: 6),
+        //     Text(
+        //       "Fiber: ${nutritionInfo?['totalNutrients']['FIBTG']['quantity'] ?? 'N/A'} g",
+        //       style: GoogleFonts.quicksand(
+        //         fontSize: 17.5,
+        //         fontWeight: FontWeight.w500,
+        //         color: Colors.white,
+        //       ),
+        //     ),
+        //     const SizedBox(height: 6),
+        //     Text(
+        //       "Protein: ${nutritionInfo?['totalNutrients']['PROCNT']['quantity'] ?? 'N/A'} g",
+        //       style: GoogleFonts.quicksand(
+        //         fontSize: 17.5,
+        //         fontWeight: FontWeight.w500,
+        //         color: Colors.white,
+        //       ),
+        //     ),
+        //     const SizedBox(height: 6),
+        //     Text(
+        //       "Carbs: ${nutritionInfo?['totalNutrients']['CHOCDF']['quantity'] ?? 'N/A'} g",
+        //       style: GoogleFonts.quicksand(
+        //         fontSize: 17.5,
+        //         fontWeight: FontWeight.w500,
+        //         color: Colors.white,
+        //       ),
+        //     ),
+        //     const SizedBox(height: 6),
+        //     Text(
+        //       "Cholesterol: ${nutritionInfo?['totalNutrients']['CHOLE']['quantity'] ?? 'N/A'}",
+        //       style: GoogleFonts.quicksand(
+        //         fontSize: 17.5,
+        //         fontWeight: FontWeight.w500,
+        //         color: Colors.white,
+        //       ),
+        //     ),
+        //   ],
+        // ),
         body: ListView(
           children: [
             Container(
@@ -190,5 +245,23 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+}
+
+class Info extends StatelessWidget {
+  final String? text;
+  const Info(
+    this.text, {
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(text!,
+        textAlign: TextAlign.center,
+        style: GoogleFonts.rubik(
+          fontSize: 19.0,
+          color: Colors.white,
+        ));
   }
 }
