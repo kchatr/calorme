@@ -74,7 +74,8 @@ class _HomePageState extends State<HomePage> {
 
   loadModel() async {
     //this function loads our model
-    await Tflite.loadModel(model: 'assets/model1-Copy1.tflite', labels: 'assets/labels.txt');
+    await Tflite.loadModel(
+        model: 'assets/model1-Copy1.tflite', labels: 'assets/labels.txt');
   }
 
   classifyImage(File image) async {
@@ -122,7 +123,8 @@ class _HomePageState extends State<HomePage> {
         panel: Column(
           children: [
             const Icon(Icons.arrow_drop_up, size: 30.0, color: Colors.white),
-            Text("Nutritional Info for ${(output?[0]['label']).toString().split("_").join(" ")}",
+            Text(
+                "Nutritional Info for ${(output?[0]['label']).toString().split("_").join(" ")}",
                 textAlign: TextAlign.center,
                 style: GoogleFonts.rubik(
                   fontSize: 19.0,
@@ -138,35 +140,35 @@ class _HomePageState extends State<HomePage> {
                 ]),
                 TableRow(children: [
                   const Info("Fat"),
-                  Info((nutritionInfo?['totalNutrients']['FAT']['quantity']
+                  Info((nutritionInfo?['totalNutrients']?['FAT']?['quantity']
                               .toString() ??
                           'N/A') +
                       "g"),
                 ]),
                 TableRow(children: [
                   const Info("Fiber"),
-                  Info((nutritionInfo?['totalNutrients']['FIBTG']['quantity']
+                  Info((nutritionInfo?['totalNutrients']?['FIBTG']?['quantity']
                               .toString() ??
                           'N/A') +
                       "g"),
                 ]),
                 TableRow(children: [
                   const Info("Protein"),
-                  Info((nutritionInfo?['totalNutrients']['PROCNT']['quantity']
+                  Info((nutritionInfo?['totalNutrients']?['PROCNT']?['quantity']
                               .toString() ??
                           'N/A') +
                       "g"),
                 ]),
                 TableRow(children: [
                   const Info("Carbs"),
-                  Info((nutritionInfo?['totalNutrients']['CHOCDF']['quantity']
+                  Info((nutritionInfo?['totalNutrients']?['CHOCDF']?['quantity']
                               .toString() ??
                           'N/A') +
                       "g"),
                 ]),
                 TableRow(children: [
                   const Info("Cholesterol"),
-                  Info((nutritionInfo?['totalNutrients']['CHOLE']['quantity']
+                  Info((nutritionInfo?['totalNutrients']?['CHOLE']?['quantity']
                           .toString() ??
                       'N/A')),
                 ]),
