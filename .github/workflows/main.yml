@@ -22,6 +22,7 @@ jobs:
     - run: flutter analyze
     # - run: flutter test
     - run: flutter build apk
+    - run: flutter build appbundle
     - run: flutter build web
     
     # Upload generated apk to the artifacts.
