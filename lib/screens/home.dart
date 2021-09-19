@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
     String formattedFood = food.split("_").join("%20");
 
     String url =
-        "https://api.edamam.com/api/nutrition-data?app_id=e45357af&app_key=b93730855e301e7ba5518d4b4c707e9a&nutrition_type=logging&ingr=" +
+        "https://api.edamam.com/api/nutrition-data?app_id=e45357af&app_key=b93730855e301e7ba5518d4b4c707e9a&nutrition_type=logging&ingr=1%20cup%20" +
             formattedFood;
     var uri = Uri.parse(url);
 
@@ -49,13 +49,13 @@ class _HomePageState extends State<HomePage> {
 
     await classifyImage(selected);
 
-    nutritionInfo = await getInfo(output?[0]["label"]);
+    var nutrInfo = await getInfo(output?[0]["label"]);
 
-    print(nutritionInfo);
+    print(nutrInfo);
 
     setState(() {
       imageFile = selected;
-      nutritionInfo;
+      nutritionInfo = nutrInfo;
     });
 
     showDialog<String>(
@@ -78,11 +78,10 @@ class _HomePageState extends State<HomePage> {
 
   loadModel() async {
     //this function loads our model
-    await Tflite.loadModel(model: 'assets/modelIN_threefeatures.tflite');
+    await Tflite.loadModel(model: 'assets/modelIN_threefeatures.tflite', labels: 'assets/labels.txt');
   }
 
   classifyImage(File image) async {
-    print(image);
     //this function runs the model on the image
     var ot = await Tflite.runModelOnImage(
       path: image.path,
@@ -94,8 +93,6 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       output = ot;
     });
-
-    dispose();
   }
 
   @override
@@ -129,7 +126,7 @@ class _HomePageState extends State<HomePage> {
         panel: Column(
           children: [
             const Icon(Icons.arrow_drop_up, size: 30.0, color: Colors.white),
-            Text("Nutritional Info for ${output?[0]['label']}",
+            Text("Nutritional Info for ${(output?[0]['label']).toString().split("_").join(" ")}",
                 textAlign: TextAlign.center,
                 style: GoogleFonts.rubik(
                   fontSize: 19.0,
