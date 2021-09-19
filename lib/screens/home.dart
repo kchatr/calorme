@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
 
   loadModel() async {
     //this function loads our model
-    await Tflite.loadModel(model: 'assets/model_inception_10features.tflite', labels: 'assets/labels.txt');
+    await Tflite.loadModel(model: 'assets/model1-Copy1.tflite', labels: 'assets/labels.txt');
   }
 
   classifyImage(File image) async {

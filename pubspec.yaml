@@ -68,7 +68,8 @@ flutter:
     - assets/images/calorme.png
     - assets/images/bg.jpg
     # - assets/modelIN_threefeatures.tflite
-    - assets/model_inception_10features.tflite
+    # - assets/model_inception_10features.tflite
+    - assets/model1-Copy1.tflite
     - assets/labels.txt
 
   # An image asset can refer to one or more resolution-specific "variants", see
