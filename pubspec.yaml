@@ -67,8 +67,9 @@ flutter:
   assets:
     - assets/images/home_bg.jpg
     - assets/images/calorme.png
-    - assets/images/bg.png
+    - assets/images/bg.jpg
     - assets/modelIN_threefeatures.tflite
+    - assets/labels.txt
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
