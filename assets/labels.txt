@@ -1,3 +1,8 @@
 baklava
 carrot_cake
-cheese_cake
+churros
+grilled_salmon
+guacamole
+lasagna
+oysters
+ramen

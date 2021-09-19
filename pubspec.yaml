@@ -65,10 +65,10 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/home_bg.jpg
     - assets/images/calorme.png
     - assets/images/bg.jpg
-    - assets/modelIN_threefeatures.tflite
+    # - assets/modelIN_threefeatures.tflite
+    - assets/model_inception_10features.tflite
     - assets/labels.txt
 
   # An image asset can refer to one or more resolution-specific "variants", see
