@@ -136,7 +136,7 @@ class _HomePageState extends State<HomePage> {
           ),
           child: ListView(
             children: [
-              const SizedBox(height: 360),
+              const SizedBox(height: 2),
               Center(
                 child: Image.asset("assets/images/calorme.png"),
               ),
@@ -145,12 +145,13 @@ class _HomePageState extends State<HomePage> {
                     ? Image.file(imageFile!)
                     : Container(
                         decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("assets/images/bg.jpg"),
+                          gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [Colors.transparent, Colors.black]),
                         ),
-                      )),
+                      ),
               ),
-
             ],
           ),
         ),
