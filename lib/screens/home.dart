@@ -30,8 +30,6 @@ class _HomePageState extends State<HomePage> {
             formattedFood;
     var uri = Uri.parse(url);
 
-    print(uri);
-
     var response = await http.get(uri);
 
     final body = json.decode(response.body);
@@ -50,8 +48,6 @@ class _HomePageState extends State<HomePage> {
     await classifyImage(selected);
 
     var nutrInfo = await getInfo(output?[0]["label"]);
-
-    print(nutrInfo);
 
     setState(() {
       imageFile = selected;
