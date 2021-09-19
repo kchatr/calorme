@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tflite/tflite.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:sliding_up_panel/sliding_up_panel.dart';
@@ -17,11 +18,19 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final ImagePicker picker = ImagePicker();
   File? imageFile;
+  List? output;
 
   Map<String, dynamic>? nutritionInfo;
 
-  Future<dynamic> getInfo(String url) async {
+  Future<dynamic> getInfo(String food) async {
+    String formattedFood = food.split("_").join("%20");
+
+    String url =
+        "https://api.edamam.com/api/nutrition-data?app_id=e45357af&app_key=b93730855e301e7ba5518d4b4c707e9a&nutrition_type=logging&ingr=" +
+            formattedFood;
     var uri = Uri.parse(url);
+
+    print(uri);
 
     var response = await http.get(uri);
 
@@ -38,11 +47,17 @@ class _HomePageState extends State<HomePage> {
       imageFile = selected;
     });
 
-    nutritionInfo = await getInfo(
-        "https://api.edamam.com/api/nutrition-data?app_id=e45357af&app_key=b93730855e301e7ba5518d4b4c707e9a&nutrition_type=logging&ingr=1%20slice%20chocolate%20cake");
+    await classifyImage(selected);
+
+    nutritionInfo = await getInfo(output?[0]["label"]);
+
+    print(nutritionInfo);
+
     setState(() {
+      imageFile = selected;
       nutritionInfo;
     });
+
     showDialog<String>(
       context: context,
       builder: (BuildContext context) => AlertDialog(
@@ -61,6 +76,44 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  loadModel() async {
+    //this function loads our model
+    await Tflite.loadModel(model: 'assets/modelIN_threefeatures.tflite');
+  }
+
+  classifyImage(File image) async {
+    print(image);
+    //this function runs the model on the image
+    var ot = await Tflite.runModelOnImage(
+      path: image.path,
+      numResults: 3, //the amout of categories our neural network can predict
+      threshold: 0.5,
+      imageMean: 127.5,
+      imageStd: 127.5,
+    );
+    setState(() {
+      output = ot;
+    });
+
+    dispose();
+  }
+
+  @override
+  void dispose() {
+    //dis function disposes and clears our memory
+    super.dispose();
+    Tflite.close();
+  }
+
+  @override
+  void initState() {
+    //initS is the first function that is executed by default when this class is called
+    super.initState();
+    loadModel().then((value) {
+      setState(() {});
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,7 +129,7 @@ class _HomePageState extends State<HomePage> {
         panel: Column(
           children: [
             const Icon(Icons.arrow_drop_up, size: 30.0, color: Colors.white),
-            Text("Nutritional Info",
+            Text("Nutritional Info for ${output?[0]['label']}",
                 textAlign: TextAlign.center,
                 style: GoogleFonts.rubik(
                   fontSize: 19.0,
