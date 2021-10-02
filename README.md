@@ -1,4 +1,14 @@
 # CalorMe
+## The Future of Healthy Eating
+*This project was submitted to Hack the North 2021 for the Entrepreneurship Prize*
+---
+## Project Images
+![Home Screen](assets/docs/home_screen.png)
+![Upload Image Screen](assets/docs/upload_image_screen.png)
+![Updated Info Screen](assets/docs/updated_info_screen.png)
+![Info Screen](assets/docs/info_screen.png)
+---
+## Project Details
 <h2>🍳 Inspiration</h2>
 
 <p>It seems like the world could not be more eager to inform us that the nutritional apocalypse is upon us: one in every five children is obese, one in every three adults is obese, and heart disease and stroke are among the leading causes of death worldwide. On a whole, obesity rates have more than tripled since 1975 and are still on the rise.</p>
@@ -96,22 +106,6 @@ We created the mobile app using Google's Flutter framework. Flutter enables you 
 
 
 
----
 
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
 
 
